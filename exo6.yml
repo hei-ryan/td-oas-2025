@@ -69,33 +69,9 @@ components:
             - fr
             - eng
     UserProfile:
+      allOf:
+        - $ref: '#/components/schemas/CreateUserProfile'
       type: object
       properties:
         identifier:
           type: string
-        first_name:
-          type: string
-        last_name:
-          type: string
-        birthday:
-          type: string
-          format: date
-        email:
-          type: string
-          format: email
-        address_street:
-          type: string
-        address_city:
-          type: string
-        address_country:
-          type: string
-        address_postal_code:
-          type: string
-        needs_newsletter:
-          type: boolean
-        language:
-          type: string
-          enum:
-            - mg
-            - fr
-            - eng
