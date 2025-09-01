@@ -1,0 +1,101 @@
+openapi: 3.0.3
+info:
+  title: TD OpenAPI Specification - Exercise 6
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8000'
+paths:
+  /users/{id}:
+    get:
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Specific user with all its information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+  /users:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUserProfile'
+      responses:
+        200:
+          description: List of created users with all its informations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserProfile'
+components:
+  schemas:
+    CreateUserProfile:
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        birthday:
+          type: string
+          format: date
+        email:
+          type: string
+          format: email
+        address_street:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_postal_code:
+          type: string
+        needs_newsletter:
+          type: boolean
+        language:
+          type: string
+          enum:
+            - mg
+            - fr
+            - eng
+    UserProfile:
+      type: object
+      properties:
+        identifier:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        birthday:
+          type: string
+          format: date
+        email:
+          type: string
+          format: email
+        address_street:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_postal_code:
+          type: string
+        needs_newsletter:
+          type: boolean
+        language:
+          type: string
+          enum:
+            - mg
+            - fr
+            - eng
