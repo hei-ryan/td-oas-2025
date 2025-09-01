@@ -16,16 +16,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                      example: 1
-                    title:
-                      type: string
-                      example: Faire les courses
-                    completed:
-                      type: boolean
+                  $ref: '#/components/schemas/Task'
     post:
       requestBody:
         content:
@@ -33,16 +24,7 @@ paths:
             schema:
               type: array
               items:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    example: 1
-                  title:
-                    type: string
-                    example: Faire les courses
-                  completed:
-                    type: boolean
+                $ref: '#/components/schemas/Task'
       responses:
         201:
           description: List of tasks created
@@ -51,15 +33,17 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                      example: 1
-                    title:
-                      type: string
-                      example: Faire les courses
-                    completed:
-                      type: boolean
-
-  
+                  $ref: '#/components/schemas/Task'
+components:
+  schemas:
+    Task:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: Faire les courses
+        completed:
+          type: boolean
