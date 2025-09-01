@@ -56,6 +56,20 @@ paths:
               schema:
                 type: string
                 example: Task not found
+    delete:
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        200:
+          description: Deleted task provided by identifier
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
 components:
   schemas:
     Task:
