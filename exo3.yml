@@ -1,0 +1,65 @@
+openapi: 3.0.3
+info:
+  title: TD OpenAPI Specification
+  description: TD OpenAPI Specification - Exercise 3
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8000'
+paths:
+  /tasks:
+    get:
+      responses:
+        200:
+          description: List of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    title:
+                      type: string
+                      example: Faire les courses
+                    completed:
+                      type: boolean
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  title:
+                    type: string
+                    example: Faire les courses
+                  completed:
+                    type: boolean
+      responses:
+        201:
+          description: List of tasks created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    title:
+                      type: string
+                      example: Faire les courses
+                    completed:
+                      type: boolean
+
+  
