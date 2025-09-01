@@ -7,6 +7,8 @@ servers:
 paths:
   /users/{id}:
     get:
+      tags:
+        - Users
       parameters:
         - in: path
           name: id
@@ -22,6 +24,8 @@ paths:
                 $ref: '#/components/schemas/UserProfile'
   /users:
     post:
+      tags:
+        - Users
       requestBody:
         content:
           application/json:
@@ -38,7 +42,69 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/UserProfile'
+  /users/{id}/personalInfo:
+    put:
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/UserIdentifierPathParameter'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonalInfo'
+      responses:
+        200:
+          description: User with updated personal info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+  /users/{id}/address:
+    put:
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/UserIdentifierPathParameter'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+      responses:
+        200:
+          description: User with updated address
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+  /users/{id}/preferences:
+    put:
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/UserIdentifierPathParameter'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Preference'
+      responses:
+        200:
+          description: User with updated preference
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
 components:
+  parameters:
+    UserIdentifierPathParameter:
+      in: path
+      name: id
+      description: User identifier
+      schema:
+        type: string
+      required: true
   schemas:
     PersonalInfo:
       properties:
