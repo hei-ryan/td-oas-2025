@@ -40,7 +40,7 @@ paths:
                   $ref: '#/components/schemas/UserProfile'
 components:
   schemas:
-    CreateUserProfile:
+    PersonalInfo:
       properties:
         first_name:
           type: string
@@ -52,6 +52,8 @@ components:
         email:
           type: string
           format: email
+    Address:
+      properties:
         address_street:
           type: string
         address_city:
@@ -60,6 +62,8 @@ components:
           type: string
         address_postal_code:
           type: string
+    Preference:
+      properties:
         needs_newsletter:
           type: boolean
         language:
@@ -68,6 +72,11 @@ components:
             - mg
             - fr
             - eng
+    CreateUserProfile:
+      allOf:
+        - $ref: '#/components/schemas/PersonalInfo'
+        - $ref: '#/components/schemas/Address'
+        - $ref: '#/components/schemas/Preference'
     UserProfile:
       allOf:
         - $ref: '#/components/schemas/CreateUserProfile'
